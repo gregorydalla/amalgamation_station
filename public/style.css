@@ -1,0 +1,22 @@
+body {
+	background: #ffddcc;
+}
+
+#client_ip {
+	display: none;
+}
+
+#content {
+	margin: 5% 15%;
+	padding: 5%;
+	align-content: center;
+	background: #444;
+}
+
+#content p {
+	color: #93ff86;
+}
+
+#content hr {
+	color: #9caffa;
+}
