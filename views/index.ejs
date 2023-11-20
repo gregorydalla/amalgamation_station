@@ -1,6 +1,44 @@
 <%- include( 'header.ejs' ) %>
 
+<div>
+<h1> Under Construction </h1>
+<p>
+yep, this is incomplete. fated to die in obscurity. i'm great at components, but terrible at full projects
+</p>
+
+<p>
+the goal was to make a site like omegle [rip], with random user pairing and video + audio + text chat.
+i planned to use webrtc for the video/audio and socketio for data transport between clients and the server.
+</p>
+
+<p>
+the main issue i ran into and wasted a lot of time on was getting the clients to communicate with each other and maintain persistence somehow.
+i didn't really want to have clients directly connect to the sockets and originally wanted to send chats via post requests and have all the socket communication happen on the backend between express and some custom chat session manager
+</p>
+
+<p>
+i gave up on the webrtc and just tried to make a chat site with direct socket connections.
+having difficulty conceptualising what needs to happen to transport the messages.
+ahh, this sucks.
+web dev is hard
+</p>
+
+<p>
+</p>
+</div>
+
+<div id=chat>
+	<div id=chat_messages>
+	</div>
+
+	<form id=chat_compose onsubmit='send_msg( event )'>
+		<input type=text id=msg name=msg required>
+		<input type=submit id=sendmsgbtn value=send>
+	<form>
+</div>
+
 <br>
+<hr>
 <p> sphinx of black quartz, judge my vow </p>
 
 <%- include( 'footer.ejs' ) %>

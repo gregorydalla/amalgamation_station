@@ -3,15 +3,43 @@
 <html>
 <head>
 	<title> Styx and Stoned </title>
-	<link rel="stylesheet" href="style.css">
+	<link rel='stylesheet' href='style.css'>
+	<script src='socket.io.js'></script>
 	<script>
 		window.addEventListener( 'load', () => {
-			var f = document.createElement( 'iframe' );
-			f.src = 'https://ident.me';
-			f.id = 'client_ip';
-			document.body.appendChild( f );
+			// ip as id
+			var req = new XMLHttpRequest();
+			req.open( 'GET', 'https://ident.me', false );
+			req.send( null );
+			let client_ip = req.responseText;
 
-			// TODO send to server
+			// connect and send ip for queueing
+			const socket = io( '/:6969' )
+			socket.emit( 'idself', client_ip );
+
+			// pairing request, callback is debatable
+			var friend_ip = socket.emit( 'findfriend', (friend_ip) => {
+				return friend_ip;
+			});
+
+			// send chat message
+			function send_msg( event ) {
+				event.preventDefault();
+
+				const msg = document.getElementById( 'msg' ).value;
+
+				// TODO: append to chat field
+
+				socket.emit( 'newmsg', msg );
+			}
+
+			socket.on( 'newmsg', (msg) => {
+				console.log( msg );
+			});
+
+			socket.on( 'friendleft', () => {
+				// XXX: sadness
+			});
 		});
 
 		window.addEventListener( 'beforeunload', () => {

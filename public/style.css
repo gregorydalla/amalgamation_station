@@ -1,5 +1,11 @@
+@font-face {
+	font-family: FantasqueSansMono;
+	src: url( fantasquesansmono-regular.ttf );
+}
+
 body {
-	background: #ffddcc;
+	background: #fdc;
+	font-family: FantasqueSansMono;
 }
 
 #client_ip {
@@ -9,14 +15,50 @@ body {
 #content {
 	margin: 5% 15%;
 	padding: 5%;
-	align-content: center;
+	text-align: center;
 	background: #444;
+
+	p {
+		color: #93ff86;
+	}
+
+	h1, hr {
+		color: #9caffa;
+	}
 }
 
-#content p {
-	color: #93ff86;
+#selfid {
+	label, #login {
+		color: #9caffa;
+		background: #444;
+	}
+
+	#uname {
+		background: #444;
+		color: #93ff86;
+	}
 }
 
-#content hr {
-	color: #9caffa;
+#content_grid {
+	display: grid;
+	grid-gap: 10% 1%;
+	grid-template-areas:
+		'video0 video0 chat'
+		'video1 video1 chat';
+
+	div {
+		background: #fff;
+	}
+}
+
+#grid_item_video0 {
+	grid-area: video0;
+}
+
+#grid_item_video1 {
+	grid-area: video1;
+}
+
+#grid_item_chat {
+	grid-area: chat;
 }
